@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
   name: helloarc
-  namespace: flux-system
+  namespace: cluster-mgmt
 spec:
   interval: 1m
   url: https://github.com/zaidmohd/hello_arc
