@@ -1,14 +1,31 @@
-apiVersion: helm.fluxcd.io/v1
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: helloarc
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/zaidmohd/hello_arc
+  ref:
+    branch: master
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: nginx-ingress
   namespace: cluster-mgmt
 spec:
+  # The interval at which to reconcile the Helm release
+  interval: 10m
   releaseName: nginx-ingress
   chart:
-    git: https://github.com/likamrat/hello_arc.git
-    path: charts/nginx-ingress
-    ref: master
+    spec:
+      # The path of the chart relative to the repository root
+      chart: charts/nginx-ingress
+      # The reference to the GitRepository
+      sourceRef:
+        kind: GitRepository
+        name: helloarc
   values:
     image:
       repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
