@@ -1,14 +1,20 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: hello-arc
-  namespace: prod
+  name: nginx-ingress
+  namespace: cluster-mgmt
 spec:
-  releaseName: hello-arc-prod
+  # The interval at which to reconcile the Helm release
+  # interval: 10m
+  releaseName: nginx-ingress
   chart:
-    git: https://github.com/likamrat/hello_arc.git
-    path: charts/hello-arc
-    ref: master
+    spec:
+      # The path of the chart relative to the repository root
+      chart: charts/hello-arc
+      # The reference to the GitRepository
+      sourceRef:
+        kind: GitRepository
+        name: git-arc
   values:
     image:
       repository: liorkamrat/hello-arc
