@@ -16,7 +16,7 @@ metadata:
   namespace: cluster-mgmt
 spec:
   # The interval at which to reconcile the Helm release
-  # interval: 10m
+  interval: 10m
   releaseName: nginx-ingress
   chart:
     spec:
