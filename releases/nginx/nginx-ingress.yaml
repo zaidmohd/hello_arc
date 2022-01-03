@@ -25,7 +25,7 @@ spec:
       # The reference to the GitRepository
       sourceRef:
         kind: GitRepository
-        # name: git-arc
+        name: gitops-demo7
   values:
     image:
       repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
