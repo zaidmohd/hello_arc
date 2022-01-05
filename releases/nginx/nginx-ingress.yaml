@@ -13,7 +13,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: nginx-ingress
-  namespace: cluster-mgmt3
+  namespace: hello-arc
 spec:
   # The interval at which to reconcile the Helm release
   interval: 10m
