@@ -54,6 +54,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: null
+      paths: ["/"]
   rules:
   - http:       
       paths:
