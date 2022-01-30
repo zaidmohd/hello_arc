@@ -16,7 +16,7 @@ metadata:
   namespace: hello-arc
 spec:
   # The interval at which to reconcile the Helm release
-  interval: 10m
+  interval: 1m
   releaseName: hello-arc
   chart:
     spec:
