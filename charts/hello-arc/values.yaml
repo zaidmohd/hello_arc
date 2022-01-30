@@ -54,11 +54,11 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: null
-      paths: ["/"]
   rules:
   - http:       
       paths:
-        - pathType: ImplementationSpecific
+        - path: /
+          pathType: ImplementationSpecific
           backend:
             service:
               name: hello-arc
