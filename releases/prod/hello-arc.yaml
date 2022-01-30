@@ -5,7 +5,7 @@ metadata:
   namespace: hello-arc
 spec:
   interval: 1m
-  url: https://github.com/likamrat/hello_arc
+  url: https://github.com/zaidmohd/hello_arc
   ref:
     branch: master
 ---
