@@ -1,33 +1,33 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: GitRepository
+kind: HelmRepository
 metadata:
-  name: git-arc
+  name: bitnami
   namespace: hello-arc
 spec:
-  interval: 1m
-  url: https://github.com/zaidmohd/hello_arc
-  ref:
-    branch: master
+  interval: 30m
+  url: https://charts.bitnami.com/bitnami
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: nginx-ingress
+  name: nginx
   namespace: hello-arc
 spec:
-  # The interval at which to reconcile the Helm release
-  interval: 10m
-  releaseName: nginx-ingress
+  releaseName: nginx-ingress-controller
   chart:
     spec:
-      # The path of the chart relative to the repository root
-      chart: charts/nginx-ingress
-      # The reference to the GitRepository
+      chart: nginx-ingress-controller
       sourceRef:
-        kind: GitRepository
-        name: git-arc
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      version: "5.6.14"
+  interval: 1h0m0s
+  install:
+    remediation:
+      retries: 3
+  # Default values
+  # https://github.com/bitnami/charts/blob/master/bitnami/nginx-ingress-controller/values.yaml
   values:
-    image:
-      repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
-      tag: "0.32.0"
-    replicaCount: 3
+    service:
+      type: LoadBalancer
