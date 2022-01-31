@@ -25,7 +25,7 @@ spec:
       # The reference to the GitRepository
       sourceRef:
         kind: GitRepository
-        name: cluster-helm-config5
+        name: cluster-helm-config6
   values:
     image:
       repository: liorkamrat/hello-arc
