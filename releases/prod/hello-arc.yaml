@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -7,17 +8,11 @@ metadata:
   fluxcd.io/automated: "false"
   clusterconfig.azure.com/use-managed-source: "true"
 spec:
-  # The interval at which to reconcile the Helm release
   interval: 1m
   releaseName: hello-arc
   chart:
     spec:
-      # The path of the chart relative to the repository root
       chart: charts/hello-arc
-      # The reference to the GitRepository
-      # sourceRef:
-      #   kind: GitRepository
-      #   name: git-arc
   values:
     image:
       repository: liorkamrat/hello-arc
@@ -26,39 +21,3 @@ spec:
     env:
       name: MESSAGE
       value: Azure Arc enabled K8s GitOps Demo!
-# apiVersion: source.toolkit.fluxcd.io/v1beta1
-# kind: GitRepository
-# metadata:
-#   name: git-arc
-#   namespace: hello-arc
-# spec:
-#   interval: 1m
-#   url: https://github.com/zaidmohd/hello_arc
-#   ref:
-#     branch: master
-# ---
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: hello-arc
-#   namespace: hello-arc
-# spec:
-#   # The interval at which to reconcile the Helm release
-#   interval: 1m
-#   releaseName: hello-arc
-#   chart:
-#     spec:
-#       # The path of the chart relative to the repository root
-#       chart: charts/hello-arc
-#       # The reference to the GitRepository
-#       sourceRef:
-#         kind: GitRepository
-#         name: git-arc
-#   values:
-#     image:
-#       repository: liorkamrat/hello-arc
-#       tag: latest
-#     replicaCount: 1
-#     env:
-#       name: MESSAGE
-#       value: Azure Arc enabled K8s GitOps Demo!
