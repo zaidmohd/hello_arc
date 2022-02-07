@@ -6,7 +6,7 @@ metadata:
   namespace: hello-arc
   annotations:
   # fluxcd.io/automated: "false"
-  clusterconfig.azure.com/use-managed-source: "true"
+    clusterconfig.azure.com/use-managed-source: "true"
 spec:
   interval: 1m
   releaseName: hello-arc
