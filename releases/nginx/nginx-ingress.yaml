@@ -13,8 +13,8 @@ spec:
       chart: charts/nginx-ingress
   values:
     image:
-      repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
-      tag: "0.33.0"
+      repository: k8s.gcr.io/ingress-nginx/controller
+      tag: "v1.1.1"
     replicaCount: 3
 
 # apiVersion: source.toolkit.fluxcd.io/v1beta1
