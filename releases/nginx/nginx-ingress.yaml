@@ -14,7 +14,7 @@ spec:
   values:
     image:
       repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
-      tag: latest
+      tag: "0.33.0"
     replicaCount: 3
 
 # apiVersion: source.toolkit.fluxcd.io/v1beta1
