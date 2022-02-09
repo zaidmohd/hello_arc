@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: nginx-ingress
-  namespace: hello-arc
+  namespace: nginx-ingress
   annotations:
     clusterconfig.azure.com/use-managed-source: "true"
 spec:
@@ -12,7 +12,8 @@ spec:
     spec:
       chart: charts/nginx-ingress
   values:
-    image:
-      repository: k8s.gcr.io/ingress-nginx/controller
-      tag: "v1.1.1"
-    replicaCount: 3
+    controller:
+      image:
+        repository: k8s.gcr.io/ingress-nginx/controller
+        tag: "v1.1.1"
+      replicaCount: 3
