@@ -13,7 +13,7 @@ spec:
       chart: charts/hello-arc
   values:
     image:
-      repository: azurearcjumpstart.azurecr.io/hello-arc-gitops
+      repository: liorkamrat/hello-arc
       tag: latest
     replicaCount: 1
     env:
