@@ -10,7 +10,7 @@ spec:
   releaseName: hello-arc
   chart:
     spec:
-      chart: charts/hello-arc
+      chart: ./charts/hello-arc
   values:
     image:
       repository: azurearcjumpstart.azurecr.io/hello-arc-gitops
